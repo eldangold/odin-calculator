@@ -28,7 +28,7 @@ button {
     align-items: center;
 }
 
-.display {
+#display {
     background-color: darkgrey;
     height: 50px;
     margin-bottom: 5px;
