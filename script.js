@@ -1,22 +1,23 @@
-let firstNumber;
-let secondNumber;
-let operator;
+let firstNumber = 5;
+let secondNumber = 7;
+let operator = "sum";
 let displayValue;
 
 function sum(firstNumber, secondNumber) {
-    return firstNumber + secondNumber;
+    document.getElementById("display").textContent = firstNumber + secondNumber;
+    
 }
 
 function subtract(firstNumber, secondNumber) {
-    return firstNumber - secondNumber;
+    document.getElementById("display").textContent = firstNumber - secondNumber;
 }
 
 function multiply(firstNumber, secondNumber) {
-    return firstNumber * secondNumber;
+    document.getElementById("display").textContent = firstNumber * secondNumber;
 }
 
 function divide(firstNumber, secondNumber) {
-    return firstNumber % secondNumber;
+    document.getElementById("display").textContent = firstNumber % secondNumber;
 }
 
 function operate(firstNumber, secondNumber, operator) {
