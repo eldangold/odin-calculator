@@ -1,6 +1,6 @@
-let firstNumber = 5;
-let secondNumber = 7;
-let operator = "sum";
+let firstNumber;
+let secondNumber;
+let operator;
 let displayValue;
 
 function sum(firstNumber, secondNumber) {
@@ -21,19 +21,19 @@ function divide(firstNumber, secondNumber) {
 }
 
 function operate(firstNumber, secondNumber, operator) {
-    if (operator = "sum") {
+    if (operator === "sum") {
         sum(firstNumber, secondNumber)
     }
 
-    else if (operator = "subtract") {
+    else if (operator === "subtract") {
         subtract(firstNumber, secondNumber)
     }
 
-    else if (operator = "multiply") {
+    else if (operator === "multiply") {
         multiply(firstNumber, secondNumber)
     }
 
-    else if (operator = "divide") {
+    else if (operator === "divide") {
         divide(firstNumber, secondNumber)
     }
 }
