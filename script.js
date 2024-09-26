@@ -17,7 +17,7 @@ function multiply(firstNumber, secondNumber) {
 }
 
 function divide(firstNumber, secondNumber) {
-    document.getElementById("display").textContent = firstNumber % secondNumber;
+    document.getElementById("display").textContent = firstNumber / secondNumber;
 }
 
 function operate(firstNumber, secondNumber, operator) {
