@@ -1,0 +1,41 @@
+body {
+    display: flex;
+    margin: 0px;
+    justify-content: center;
+    align-content: center;
+    height: 100vh;
+}
+
+.buttons {
+    display: flex;
+    flex-wrap: wrap;
+    height: 600px;
+    width: 600px;
+}
+
+.numbers {
+    display: flex;
+    background-color: yellow;
+}
+
+.controls {
+    background-color: orange;
+}
+
+button {
+    flex: 1 25%;
+    justify-content: center;
+    align-items: center;
+}
+
+.display {
+    background-color: darkgrey;
+    height: 50px;
+    margin-bottom: 5px;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
