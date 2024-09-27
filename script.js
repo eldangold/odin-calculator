@@ -4,21 +4,20 @@ let operator;
 let displayValue = "";
 
 function sum(firstNumber, secondNumber) {
-    displayValue = Number(firstNumber) + Number(secondNumber);
-    document.getElementById("display").textContent = displayValue;
+    document.getElementById("display").textContent = Number(firstNumber) + Number(secondNumber);
     
 }
 
 function subtract(firstNumber, secondNumber) {
-    document.getElementById("display").textContent = firstNumber - secondNumber;
+    document.getElementById("display").textContent = Number(firstNumber) - Number(secondNumber);
 }
 
 function multiply(firstNumber, secondNumber) {
-    document.getElementById("display").textContent = firstNumber * secondNumber;
+    document.getElementById("display").textContent = Number(firstNumber) * Number(secondNumber);
 }
 
 function divide(firstNumber, secondNumber) {
-    document.getElementById("display").textContent = firstNumber / secondNumber;
+    document.getElementById("display").textContent = Number(firstNumber) / Number(secondNumber);
 }
 
 function operate(firstNumber, secondNumber, operator) {
