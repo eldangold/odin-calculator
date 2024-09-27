@@ -58,3 +58,10 @@ for (number of document.querySelectorAll(".controls")) {
 }
 
 document.getElementById("finishCalculation").addEventListener("click", () => operate(firstNumber,secondNumber,operator));
+document.getElementById("clearAll").addEventListener("click", () => {
+    firstNumber = null;
+    secondNumber = null;
+    operator = null;
+    displayValue = "";
+    document.getElementById("display").textContent = displayValue;
+})
