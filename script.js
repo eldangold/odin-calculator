@@ -62,7 +62,11 @@ for (number of document.querySelectorAll(".controls")) {
     number.addEventListener("click", (number) =>  { 
         
         if (firstNumber !== "" && secondNumber !== "") {
-        operate(firstNumber, secondNumber, operator)
+        operate(firstNumber, secondNumber, operator);
+        firstNumber = result;
+        secondNumber = "";
+        displayValue = result += operator;
+        document.getElementById("display").textContent = displayValue;
         
     }
     else {
@@ -74,6 +78,7 @@ for (number of document.querySelectorAll(".controls")) {
 }
 
 document.getElementById("finishCalculation").addEventListener("click", () => operate(firstNumber,secondNumber,operator));
+
 document.getElementById("clearAll").addEventListener("click", () => {
     firstNumber = null;
     secondNumber = null;
