@@ -26,19 +26,19 @@ function divide(firstNumber, secondNumber) {
 }
 
 function operate(firstNumber, secondNumber, operator) {
-    if (operator === "+") {
+    if (operator === "+" && firstNumber != "" && secondNumber != "") {
         sum(firstNumber, secondNumber)
     }
 
-    else if (operator === "-") {
+    else if (operator === "-" && firstNumber != "" && secondNumber != "") {
         subtract(firstNumber, secondNumber)
     }
 
-    else if (operator === "X") {
+    else if (operator === "X" && firstNumber != "" && secondNumber != "") {
         multiply(firstNumber, secondNumber)
     }
 
-    else if (operator === "/") {
+    else if (operator === "/" && firstNumber != "" && secondNumber != "") {
         divide(firstNumber, secondNumber)
     }
 }
@@ -72,7 +72,7 @@ for (number of document.querySelectorAll(".controls")) {
     }
     else {
         operator = number.target.textContent
-        displayValue += operator;
+        displayValue = firstNumber + operator + secondNumber;
         document.getElementById("display").textContent = displayValue;
     }
     });
