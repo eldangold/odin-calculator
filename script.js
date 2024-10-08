@@ -1,23 +1,28 @@
-let firstNumber;
-let secondNumber;
-let operator;
+let firstNumber = "";
+let secondNumber = "";
+let operator = "";
+let result;
 let displayValue = "";
 
 function sum(firstNumber, secondNumber) {
-    document.getElementById("display").textContent = Number(firstNumber) + Number(secondNumber);
+    result = parseFloat(firstNumber) + parseFloat(secondNumber);
+    document.getElementById("display").textContent = result;
     
 }
 
 function subtract(firstNumber, secondNumber) {
-    document.getElementById("display").textContent = Number(firstNumber) - Number(secondNumber);
+    result = parseFloat(firstNumber) - parseFloat(secondNumber);
+    document.getElementById("display").textContent = result;
 }
 
 function multiply(firstNumber, secondNumber) {
-    document.getElementById("display").textContent = Number(firstNumber) * Number(secondNumber);
+    result = parseFloat(firstNumber) * parseFloat(secondNumber);
+    document.getElementById("display").textContent = result;
 }
 
 function divide(firstNumber, secondNumber) {
-    document.getElementById("display").textContent = Number(firstNumber) / Number(secondNumber);
+    result = parseFloat(firstNumber) / parseFloat(secondNumber)
+    document.getElementById("display").textContent = result;
 }
 
 function operate(firstNumber, secondNumber, operator) {
@@ -40,20 +45,31 @@ function operate(firstNumber, secondNumber, operator) {
 
 for (number of document.querySelectorAll(".numbers")) {
     number.addEventListener("click", (number) =>  {
-        if (!operator) { firstNumber =  number.target.textContent;
-            displayValue = firstNumber;
-            document.getElementById("display").textContent = displayValue;}
-        else { secondNumber = (number.target.textContent);
-        displayValue += secondNumber;
-        document.getElementById("display").textContent = displayValue;
+        if (!operator) 
+            { firstNumber += number.target.textContent;
+            displayValue = firstNumber + operator + secondNumber;
+            document.getElementById("display").textContent = displayValue;
+        }
+        else {
+            secondNumber += number.target.textContent;
+            displayValue = firstNumber + operator + secondNumber;
+            document.getElementById("display").textContent = displayValue;
         }
     });
 }
 
 for (number of document.querySelectorAll(".controls")) {
-    number.addEventListener("click", (number) =>  { operator = number.target.textContent
+    number.addEventListener("click", (number) =>  { 
+        
+        if (firstNumber !== "" && secondNumber !== "") {
+        operate(firstNumber, secondNumber, operator)
+        
+    }
+    else {
+        operator = number.target.textContent
         displayValue += operator;
         document.getElementById("display").textContent = displayValue;
+    }
     });
 }
 
