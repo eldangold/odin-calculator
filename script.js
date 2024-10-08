@@ -81,9 +81,9 @@ for (number of document.querySelectorAll(".controls")) {
 document.getElementById("finishCalculation").addEventListener("click", () => operate(firstNumber,secondNumber,operator));
 
 document.getElementById("clearAll").addEventListener("click", () => {
-    firstNumber = null;
-    secondNumber = null;
-    operator = null;
+    firstNumber = "";
+    secondNumber = "";
+    operator = "";
     displayValue = "";
     document.getElementById("display").textContent = displayValue;
 })
