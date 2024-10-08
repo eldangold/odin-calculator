@@ -50,6 +50,12 @@ for (number of document.querySelectorAll(".numbers")) {
             displayValue = firstNumber + operator + secondNumber;
             document.getElementById("display").textContent = displayValue;
         }
+        else if (firstNumber, operator, secondNumber) {
+            resetValues()
+            firstNumber += number.target.textContent;
+            displayValue = firstNumber + operator + secondNumber;
+            document.getElementById("display").textContent = displayValue;
+        }
         else {
             secondNumber += number.target.textContent;
             displayValue = firstNumber + operator + secondNumber;
@@ -78,12 +84,14 @@ for (number of document.querySelectorAll(".controls")) {
     });
 }
 
-document.getElementById("finishCalculation").addEventListener("click", () => operate(firstNumber,secondNumber,operator));
-
-document.getElementById("clearAll").addEventListener("click", () => {
+function resetValues() {
     firstNumber = "";
     secondNumber = "";
     operator = "";
     displayValue = "";
     document.getElementById("display").textContent = displayValue;
-})
+}
+
+document.getElementById("finishCalculation").addEventListener("click", () => operate(firstNumber,secondNumber,operator));
+
+document.getElementById("clearAll").addEventListener("click", resetValues)
