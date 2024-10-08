@@ -63,6 +63,7 @@ for (number of document.querySelectorAll(".controls")) {
         
         if (firstNumber !== "" && secondNumber !== "") {
         operate(firstNumber, secondNumber, operator);
+        operator = number.target.textContent;
         firstNumber = result;
         secondNumber = "";
         displayValue = result += operator;
