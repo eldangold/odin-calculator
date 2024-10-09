@@ -24,6 +24,13 @@ body {
     background: linear-gradient(-180deg, #BCC5CE 0%, #929EAD 98%), radial-gradient(at top left, rgba(255,255,255,0.30) 0%, rgba(0,0,0,0.30) 100%);
     background-blend-mode: screen;
 }
+.controls {
+    background-image: linear-gradient(45deg, #874da2 0%, #c43a30 100%);
+}
+
+#positiveAndNegative, #addFloatingPoint, #clearAll, #finishCalculation {
+    background-image: linear-gradient(-20deg, #616161 0%, #9bc5c3 100%);
+}
 
 #backspace {
     height: 70px;
