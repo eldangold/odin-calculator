@@ -15,12 +15,20 @@ body {
     display: flex;
 }
 
-button {
+.numbers, .controls, #finishCalculation, #clearAll, #positiveAndNegative, #addFloatingPoint {
     flex: 1 25%;
     justify-content: center;
     align-items: center;
     font-weight: bold;
     font-size: 30px;
+    background: linear-gradient(-180deg, #BCC5CE 0%, #929EAD 98%), radial-gradient(at top left, rgba(255,255,255,0.30) 0%, rgba(0,0,0,0.30) 100%);
+ background-blend-mode: screen;
+}
+
+.backspace {
+    height: 70px;
+    width: 70px;
+    flex-shrink: 1;
     background: linear-gradient(-180deg, #BCC5CE 0%, #929EAD 98%), radial-gradient(at top left, rgba(255,255,255,0.30) 0%, rgba(0,0,0,0.30) 100%);
  background-blend-mode: screen;
 }
@@ -33,6 +41,11 @@ button {
     text-align: right;
     margin-bottom: 20px;
     align-content: center;
+    flex-grow: 1;
+}
+
+.displayPanel {
+    display: flex;
 }
 
 .container {
