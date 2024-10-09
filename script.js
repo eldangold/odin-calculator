@@ -20,8 +20,16 @@ function multiply(firstNumber, secondNumber) {
 }
 
 function divide(firstNumber, secondNumber) {
-    result = parseFloat(firstNumber) / parseFloat(secondNumber);
-    document.getElementById("display").textContent = result;
+    if (secondNumber != 0) {
+        result = parseFloat(firstNumber) / parseFloat(secondNumber);
+        document.getElementById("display").textContent = result;
+    }
+
+    else {
+        resetValues();
+        document.getElementById("display").textContent = "You can't divide by 0";
+    }
+
 }
 
 function operate(firstNumber, secondNumber, operator) {
@@ -32,7 +40,7 @@ function operate(firstNumber, secondNumber, operator) {
     } else if (operator === "X" && firstNumber !== "" && secondNumber !== "") {
         multiply(firstNumber, secondNumber);
     } else if (operator === "/" && firstNumber !== "" && secondNumber !== "") {
-        divide(firstNumber, secondNumber);
+        divide(firstNumber, secondNumber)
     }
     operator = "";
 }
