@@ -1,13 +1,12 @@
 let firstNumber = "";
 let secondNumber = "";
 let operator = "";
-let result;
+let result = "";
 let displayValue = "";
 
 function sum(firstNumber, secondNumber) {
     result = parseFloat(firstNumber) + parseFloat(secondNumber);
     document.getElementById("display").textContent = result;
-    
 }
 
 function subtract(firstNumber, secondNumber) {
@@ -21,42 +20,34 @@ function multiply(firstNumber, secondNumber) {
 }
 
 function divide(firstNumber, secondNumber) {
-    result = parseFloat(firstNumber) / parseFloat(secondNumber)
+    result = parseFloat(firstNumber) / parseFloat(secondNumber);
     document.getElementById("display").textContent = result;
 }
 
 function operate(firstNumber, secondNumber, operator) {
-    if (operator === "+" && firstNumber != "" && secondNumber != "") {
-        sum(firstNumber, secondNumber)
+    if (operator === "+" && firstNumber !== "" && secondNumber !== "") {
+        sum(firstNumber, secondNumber);
+    } else if (operator === "-" && firstNumber !== "" && secondNumber !== "") {
+        subtract(firstNumber, secondNumber);
+    } else if (operator === "X" && firstNumber !== "" && secondNumber !== "") {
+        multiply(firstNumber, secondNumber);
+    } else if (operator === "/" && firstNumber !== "" && secondNumber !== "") {
+        divide(firstNumber, secondNumber);
     }
-
-    else if (operator === "-" && firstNumber != "" && secondNumber != "") {
-        subtract(firstNumber, secondNumber)
-    }
-
-    else if (operator === "X" && firstNumber != "" && secondNumber != "") {
-        multiply(firstNumber, secondNumber)
-    }
-
-    else if (operator === "/" && firstNumber != "" && secondNumber != "") {
-        divide(firstNumber, secondNumber)
-    }
+    operator = "";
 }
 
-for (number of document.querySelectorAll(".numbers")) {
-    number.addEventListener("click", (number) =>  {
-        if (!operator) 
-            { firstNumber += number.target.textContent;
-            displayValue = firstNumber + operator + secondNumber;
-            document.getElementById("display").textContent = displayValue;
+for (let number of document.querySelectorAll(".numbers")) {
+    number.addEventListener("click", (number) => {
+        if (result !== "") {
+            resetValues();  // Сбрасываем всё после завершённой операции
         }
-        else if (firstNumber, operator, secondNumber) {
-            resetValues()
+
+        if (!operator) {
             firstNumber += number.target.textContent;
-            displayValue = firstNumber + operator + secondNumber;
+            displayValue = firstNumber;
             document.getElementById("display").textContent = displayValue;
-        }
-        else {
+        } else {
             secondNumber += number.target.textContent;
             displayValue = firstNumber + operator + secondNumber;
             document.getElementById("display").textContent = displayValue;
@@ -64,23 +55,21 @@ for (number of document.querySelectorAll(".numbers")) {
     });
 }
 
-for (number of document.querySelectorAll(".controls")) {
-    number.addEventListener("click", (number) =>  { 
-        
+for (let control of document.querySelectorAll(".controls")) {
+    control.addEventListener("click", (control) => {
         if (firstNumber !== "" && secondNumber !== "") {
-        operate(firstNumber, secondNumber, operator);
-        operator = number.target.textContent;
-        firstNumber = result;
-        secondNumber = "";
-        displayValue = result += operator;
-        document.getElementById("display").textContent = displayValue;
-        
-    }
-    else {
-        operator = number.target.textContent
-        displayValue = firstNumber + operator + secondNumber;
-        document.getElementById("display").textContent = displayValue;
-    }
+            operate(firstNumber, secondNumber, operator);
+            operator = control.target.textContent;
+            firstNumber = result;
+            secondNumber = "";
+            displayValue = firstNumber + operator;
+            document.getElementById("display").textContent = displayValue;
+            result = "";  // Сбрасываем результат
+        } else {
+            operator = control.target.textContent;
+            displayValue = firstNumber + operator;
+            document.getElementById("display").textContent = displayValue;
+        }
     });
 }
 
@@ -89,9 +78,14 @@ function resetValues() {
     secondNumber = "";
     operator = "";
     displayValue = "";
+    result = "";
     document.getElementById("display").textContent = displayValue;
 }
 
-document.getElementById("finishCalculation").addEventListener("click", () => operate(firstNumber,secondNumber,operator));
+document.getElementById("finishCalculation").addEventListener("click", () => {
+    if (firstNumber !== "" && secondNumber !== "") {
+        operate(firstNumber, secondNumber, operator);
+    }
+});
 
-document.getElementById("clearAll").addEventListener("click", resetValues)
+document.getElementById("clearAll").addEventListener("click", resetValues);
