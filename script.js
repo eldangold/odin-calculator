@@ -48,7 +48,7 @@ function operate(firstNumber, secondNumber, operator) {
 for (let number of document.querySelectorAll(".numbers")) {
     number.addEventListener("click", (number) => {
         if (result !== "") {
-            resetValues();  // Сбрасываем всё после завершённой операции
+            resetValues();
         }
 
         if (!operator) {
@@ -72,8 +72,16 @@ for (let control of document.querySelectorAll(".controls")) {
             secondNumber = "";
             displayValue = firstNumber + operator;
             document.getElementById("display").textContent = displayValue;
-            result = "";  // Сбрасываем результат
-        } else {
+            result = "";
+        } else if (firstNumber == "" && control.target.textContent == "-") {
+            firstNumber = "-" + firstNumber;
+            displayValue = firstNumber;
+            document.getElementById("display").textContent = displayValue;
+        }
+
+        else if (firstNumber == "" && control.target.textContent !== "-") {}
+
+        else {
             operator = control.target.textContent;
             displayValue = firstNumber + operator;
             document.getElementById("display").textContent = displayValue;
