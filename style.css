@@ -52,6 +52,9 @@ body {
     margin-bottom: 20px;
     align-content: center;
     flex-grow: 1;
+    max-width: 530px;
+    overflow-x: auto;
+    overflow-y: hidden;
 }
 
 .displayPanel {
