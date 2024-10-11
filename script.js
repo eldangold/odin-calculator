@@ -6,23 +6,27 @@ let displayValue = "";
 
 function sum(firstNumber, secondNumber) {
     result = +(parseFloat(firstNumber) + parseFloat(secondNumber)).toFixed(5);
-    document.getElementById("display").textContent = result;
+    displayValue = result;
+    document.getElementById("display").textContent = displayValue;
 }
 
 function subtract(firstNumber, secondNumber) {
     result = +(parseFloat(firstNumber) - parseFloat(secondNumber)).toFixed(5);
-    document.getElementById("display").textContent = result;
+    displayValue = result;
+    document.getElementById("display").textContent = displayValue;
 }
 
 function multiply(firstNumber, secondNumber) {
     result = +(parseFloat(firstNumber) * parseFloat(secondNumber)).toFixed(5);
-    document.getElementById("display").textContent = result;
+    displayValue = result;
+    document.getElementById("display").textContent = displayValue;
 }
 
 function divide(firstNumber, secondNumber) {
     if (secondNumber != 0) {
         result = +(parseFloat(firstNumber) / parseFloat(secondNumber)).toFixed(5);
-        document.getElementById("display").textContent = result;
+        displayValue = result;
+        document.getElementById("display").textContent = displayValue;
     }
 
     else {
@@ -105,3 +109,29 @@ document.getElementById("finishCalculation").addEventListener("click", () => {
 });
 
 document.getElementById("clearAll").addEventListener("click", resetValues);
+
+document.getElementById("backspace").addEventListener("click", () => {
+    if (!operator) {
+        firstNumber = firstNumber.slice(0, -1);
+        displayValue = firstNumber;
+        document.getElementById("display").textContent = displayValue; 
+    }
+    else if (firstNumber && operator && !secondNumber) {
+        operator = ""
+        displayValue = firstNumber;
+        document.getElementById("display").textContent = displayValue;
+    }
+    else if (firstNumber && operator && secondNumber && !result) {
+        secondNumber = secondNumber.slice(0, -1);
+        displayValue = firstNumber + operator + secondNumber;
+        document.getElementById("display").textContent = displayValue;
+    }
+    else if (result) {
+        firstNumber = Math.floor(result/10);
+        secondNumber = "";
+        operator = "";
+        result = "";
+        displayValue = firstNumber;
+        document.getElementById("display").textContent = displayValue;
+    }
+})
