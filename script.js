@@ -5,23 +5,23 @@ let result = "";
 let displayValue = "";
 
 function sum(firstNumber, secondNumber) {
-    result = parseFloat(firstNumber) + parseFloat(secondNumber);
+    result = +(parseFloat(firstNumber) + parseFloat(secondNumber)).toFixed(5);
     document.getElementById("display").textContent = result;
 }
 
 function subtract(firstNumber, secondNumber) {
-    result = parseFloat(firstNumber) - parseFloat(secondNumber);
+    result = +(parseFloat(firstNumber) - parseFloat(secondNumber)).toFixed(5);
     document.getElementById("display").textContent = result;
 }
 
 function multiply(firstNumber, secondNumber) {
-    result = parseFloat(firstNumber) * parseFloat(secondNumber);
+    result = +(parseFloat(firstNumber) * parseFloat(secondNumber)).toFixed(5);
     document.getElementById("display").textContent = result;
 }
 
 function divide(firstNumber, secondNumber) {
     if (secondNumber != 0) {
-        result = parseFloat(firstNumber) / parseFloat(secondNumber);
+        result = +(parseFloat(firstNumber) / parseFloat(secondNumber)).toFixed(5);
         document.getElementById("display").textContent = result;
     }
 
