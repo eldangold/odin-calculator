@@ -1,32 +1,34 @@
-let firstNumber = "";
-let secondNumber = "";
-let operator = "";
-let result = "";
-let displayValue = "";
+let calcData = {
+    firstNumber: "",
+    secondNumber: "",
+    operator: "",
+    result: "",
+    displayValue: ""
+};
 
-function sum(firstNumber, secondNumber) {
-    result = +(parseFloat(firstNumber) + parseFloat(secondNumber)).toFixed(5);
-    displayValue = result;
-    document.getElementById("display").textContent = displayValue;
+function sum(calcData) {
+    calcData.result = +(parseFloat(calcData.firstNumber) + parseFloat(calcData.secondNumber)).toFixed(5);
+    calcData.displayValue = calcData.result;
+    document.getElementById("display").textContent = calcData.displayValue;
 }
 
-function subtract(firstNumber, secondNumber) {
-    result = +(parseFloat(firstNumber) - parseFloat(secondNumber)).toFixed(5);
-    displayValue = result;
-    document.getElementById("display").textContent = displayValue;
+function subtract(calcData) {
+    calcData.result = +(parseFloat(calcData.firstNumber) - parseFloat(calcData.secondNumber)).toFixed(5);
+    calcData.displayValue = calcData.result;
+    document.getElementById("display").textContent = calcData.displayValue;
 }
 
-function multiply(firstNumber, secondNumber) {
-    result = +(parseFloat(firstNumber) * parseFloat(secondNumber)).toFixed(5);
-    displayValue = result;
-    document.getElementById("display").textContent = displayValue;
+function multiply(calcData) {
+    calcData.result = +(parseFloat(calcData.firstNumber) * parseFloat(calcData.secondNumber)).toFixed(5);
+    calcData.displayValue = calcData.result;
+    document.getElementById("display").textContent = calcData.displayValue;
 }
 
-function divide(firstNumber, secondNumber) {
-    if (secondNumber != 0) {
-        result = +(parseFloat(firstNumber) / parseFloat(secondNumber)).toFixed(5);
-        displayValue = result;
-        document.getElementById("display").textContent = displayValue;
+function divide(calcData) {
+    if (calcData.secondNumber != 0) {
+        calcData.result = +(parseFloat(calcData.firstNumber) / parseFloat(calcData.secondNumber)).toFixed(5);
+        calcData.displayValue = calcData.result;
+        document.getElementById("display").textContent = calcData.displayValue;
     }
 
     else {
@@ -36,102 +38,102 @@ function divide(firstNumber, secondNumber) {
 
 }
 
-function operate(firstNumber, secondNumber, operator) {
-    if (operator === "+" && firstNumber !== "" && secondNumber !== "") {
-        sum(firstNumber, secondNumber);
-    } else if (operator === "-" && firstNumber !== "" && secondNumber !== "") {
-        subtract(firstNumber, secondNumber);
-    } else if (operator === "X" && firstNumber !== "" && secondNumber !== "") {
-        multiply(firstNumber, secondNumber);
-    } else if (operator === "/" && firstNumber !== "" && secondNumber !== "") {
-        divide(firstNumber, secondNumber)
+function operate(calcData) {
+    if (calcData.operator === "+" && calcData.firstNumber !== "" && calcData.secondNumber !== "") {
+        sum(calcData);
+    } else if (calcData.operator === "-" && calcData.firstNumber !== "" && calcData.secondNumber !== "") {
+        subtract(calcData);
+    } else if (calcData.operator === "X" && calcData.firstNumber !== "" && calcData.secondNumber !== "") {
+        multiply(calcData);
+    } else if (calcData.operator === "/" && calcData.firstNumber !== "" && calcData.secondNumber !== "") {
+        divide(calcData)
     }
-    operator = "";
+    calcData.operator = "";
 }
 
 for (let number of document.querySelectorAll(".numbers")) {
     number.addEventListener("click", (number) => {
-        if (result !== "") {
+        if (calcData.result !== "") {
             resetValues();
         }
 
-        if (!operator) {
-            firstNumber += number.target.textContent;
-            displayValue = firstNumber;
-            document.getElementById("display").textContent = displayValue;
+        if (!calcData.operator) {
+            calcData.firstNumber += number.target.textContent;
+            calcData.displayValue = calcData.firstNumber;
+            document.getElementById("display").textContent = calcData.displayValue;
         } else {
-            secondNumber += number.target.textContent;
-            displayValue = firstNumber + operator + secondNumber;
-            document.getElementById("display").textContent = displayValue;
+            calcData.secondNumber += number.target.textContent;
+            calcData.displayValue = calcData.firstNumber + calcData.operator + calcData.secondNumber;
+            document.getElementById("display").textContent = calcData.displayValue;
         }
     });
 }
 
 for (let control of document.querySelectorAll(".controls")) {
     control.addEventListener("click", (control) => {
-        if (firstNumber !== "" && secondNumber !== "") {
-            operate(firstNumber, secondNumber, operator);
-            operator = control.target.textContent;
-            firstNumber = result;
-            secondNumber = "";
-            displayValue = firstNumber + operator;
-            document.getElementById("display").textContent = displayValue;
-            result = "";
-        } else if (firstNumber == "" && control.target.textContent == "-") {
-            firstNumber = "-" + firstNumber;
-            displayValue = firstNumber;
-            document.getElementById("display").textContent = displayValue;
+        if (calcData.firstNumber !== "" && calcData.secondNumber !== "") {
+            operate(calcData.firstNumber, calcData.secondNumber, calcData.operator);
+            calcData.operator = control.target.textContent;
+            calcData.firstNumber = calcData.result;
+            calcData.secondNumber = "";
+            calcData.displayValue = calcData.firstNumber + calcData.operator;
+            document.getElementById("display").textContent = calcData.displayValue;
+            calcData.result = "";
+        } else if (calcData.firstNumber == "" && control.target.textContent == "-") {
+            calcData.firstNumber = "-" + calcData.firstNumber;
+            calcData.displayValue = calcData.firstNumber;
+            document.getElementById("display").textContent = calcData.displayValue;
         }
 
-        else if (firstNumber == "" && control.target.textContent !== "-") {}
+        else if (calcData.firstNumber == "" && control.target.textContent !== "-") {}
 
         else {
-            operator = control.target.textContent;
-            displayValue = firstNumber + operator;
-            document.getElementById("display").textContent = displayValue;
+            calcData.operator = control.target.textContent;
+            calcData.displayValue = calcData.firstNumber + calcData.operator;
+            document.getElementById("display").textContent = calcData.displayValue;
         }
     });
 }
 
 function resetValues() {
-    firstNumber = "";
-    secondNumber = "";
-    operator = "";
-    displayValue = "";
-    result = "";
-    document.getElementById("display").textContent = displayValue;
+    calcData.firstNumber = "";
+    calcData.secondNumber = "";
+    calcData.operator = "";
+    calcData.displayValue = "";
+    calcData.result = "";
+    document.getElementById("display").textContent = calcData.displayValue;
 }
 
 document.getElementById("finishCalculation").addEventListener("click", () => {
-    if (firstNumber !== "" && secondNumber !== "") {
-        operate(firstNumber, secondNumber, operator);
+    if (calcData.firstNumber !== "" && calcData.secondNumber !== "") {
+        operate(calcData);
     }
 });
 
 document.getElementById("clearAll").addEventListener("click", resetValues);
 
 document.getElementById("backspace").addEventListener("click", () => {
-    if (!operator) {
-        firstNumber = firstNumber.slice(0, -1);
-        displayValue = firstNumber;
-        document.getElementById("display").textContent = displayValue; 
+    if (!calcData.operator) {
+        calcData.firstNumber = calcData.firstNumber.slice(0, -1);
+        calcData.displayValue = calcData.firstNumber;
+        document.getElementById("display").textContent = calcData.displayValue; 
     }
-    else if (firstNumber && operator && !secondNumber) {
-        operator = ""
-        displayValue = firstNumber;
-        document.getElementById("display").textContent = displayValue;
+    else if (calcData.firstNumber && calcData.operator && !calcData.secondNumber) {
+        calcData.operator = ""
+        calcData.displayValue = calcData.firstNumber;
+        document.getElementById("display").textContent = calcData.displayValue;
     }
-    else if (firstNumber && operator && secondNumber && !result) {
-        secondNumber = secondNumber.slice(0, -1);
-        displayValue = firstNumber + operator + secondNumber;
-        document.getElementById("display").textContent = displayValue;
+    else if (calcData.firstNumber && calcData.operator && calcData.secondNumber && !calcData.result) {
+        calcData.secondNumber = calcData.secondNumber.slice(0, -1);
+        calcData.displayValue = calcData.firstNumber + calcData.operator + calcData.secondNumber;
+        document.getElementById("display").textContent = calcData.displayValue;
     }
-    else if (result) {
-        firstNumber = Math.floor(result/10);
-        secondNumber = "";
-        operator = "";
-        result = "";
-        displayValue = firstNumber;
-        document.getElementById("display").textContent = displayValue;
+    else if (calcData.result) {
+        calcData.firstNumber = Math.floor(calcData.result/10);
+        calcData.secondNumber = "";
+        calcData.operator = "";
+        calcData.result = "";
+        calcData.displayValue = calcData.firstNumber;
+        document.getElementById("display").textContent = calcData.displayValue;
     }
 })
