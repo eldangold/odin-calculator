@@ -94,7 +94,7 @@ for (let number of document.querySelectorAll(".numbers")) {
 for (let control of document.querySelectorAll(".controls")) {
   control.addEventListener("click", (control) => {
     if (calcData.firstNumber !== "" && calcData.secondNumber !== "") {
-      operate(calcData.firstNumber, calcData.secondNumber, calcData.operator);
+      operate(calcData);
       calcData.operator = control.target.textContent;
       calcData.firstNumber = calcData.result;
       calcData.secondNumber = "";
