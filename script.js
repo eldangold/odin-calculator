@@ -46,26 +46,26 @@ function divide(calcData) {
 function operate(calcData) {
   if (
     calcData.operator === "+" &&
-    calcData.firstNumber !== "" &&
-    calcData.secondNumber !== ""
+    calcData.firstNumber &&
+    calcData.secondNumber
   ) {
     sum(calcData);
   } else if (
     calcData.operator === "-" &&
-    calcData.firstNumber !== "" &&
-    calcData.secondNumber !== ""
+    calcData.firstNumber &&
+    calcData.secondNumber
   ) {
     subtract(calcData);
   } else if (
     calcData.operator === "X" &&
-    calcData.firstNumber !== "" &&
-    calcData.secondNumber !== ""
+    calcData.firstNumber &&
+    calcData.secondNumber
   ) {
     multiply(calcData);
   } else if (
     calcData.operator === "/" &&
-    calcData.firstNumber !== "" &&
-    calcData.secondNumber !== ""
+    calcData.firstNumber &&
+    calcData.secondNumber
   ) {
     divide(calcData);
   }
@@ -74,7 +74,7 @@ function operate(calcData) {
 
 for (let number of document.querySelectorAll(".numbers")) {
   number.addEventListener("click", (number) => {
-    if (calcData.result !== "") {
+    if (calcData.result) {
       resetValues();
     }
 
@@ -93,7 +93,7 @@ for (let number of document.querySelectorAll(".numbers")) {
 
 for (let control of document.querySelectorAll(".controls")) {
   control.addEventListener("click", (control) => {
-    if (calcData.firstNumber !== "" && calcData.secondNumber !== "") {
+    if (calcData.firstNumber && calcData.secondNumber) {
       operate(calcData);
       calcData.operator = control.target.textContent;
       calcData.firstNumber = calcData.result;
@@ -101,17 +101,11 @@ for (let control of document.querySelectorAll(".controls")) {
       calcData.displayValue = calcData.firstNumber + calcData.operator;
       document.getElementById("display").textContent = calcData.displayValue;
       calcData.result = "";
-    } else if (
-      calcData.firstNumber == "" &&
-      control.target.textContent == "-"
-    ) {
+    } else if (!calcData.firstNumber && control.target.textContent == "-") {
       calcData.firstNumber = "-" + calcData.firstNumber;
       calcData.displayValue = calcData.firstNumber;
       document.getElementById("display").textContent = calcData.displayValue;
-    } else if (
-      calcData.firstNumber == "" &&
-      control.target.textContent !== "-"
-    ) {
+    } else if (!calcData.firstNumber && control.target.textContent !== "-") {
     } else {
       calcData.operator = control.target.textContent;
       calcData.displayValue = calcData.firstNumber + calcData.operator;
@@ -130,7 +124,7 @@ function resetValues() {
 }
 
 document.getElementById("finishCalculation").addEventListener("click", () => {
-  if (calcData.firstNumber !== "" && calcData.secondNumber !== "") {
+  if (calcData.firstNumber && calcData.secondNumber) {
     operate(calcData);
   }
 });
@@ -193,11 +187,7 @@ window.addEventListener(
     }
 
     if (allowedOperators.includes(event.key)) {
-      if (
-        calcData.result !== "" &&
-        event.key !== "=" &&
-        event.key !== "Enter"
-      ) {
+      if (calcData.result && event.key !== "=" && event.key !== "Enter") {
         operate(calcData);
         calcData.operator = event.key;
         calcData.firstNumber = calcData.result;
@@ -207,11 +197,11 @@ window.addEventListener(
         calcData.result = "";
       }
 
-      if (calcData.firstNumber == "" && event.key == "-") {
+      if (!calcData.firstNumber && event.key == "-") {
         calcData.firstNumber = "-" + calcData.firstNumber;
         calcData.displayValue = calcData.firstNumber;
         document.getElementById("display").textContent = calcData.displayValue;
-      } else if (calcData.firstNumber == "" && event.key !== "-") {
+      } else if (!calcData.firstNumber && event.key !== "-") {
       } else if (
         calcData.firstNumber &&
         calcData.secondNumber &&
