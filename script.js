@@ -57,9 +57,8 @@ function operate(calcData) {
   ) {
     subtract(calcData);
   } else if (
-    calcData.operator === "X" &&
-    calcData.firstNumber &&
-    calcData.secondNumber
+    calcData.operator === "X" ||
+    ("*" && calcData.firstNumber && calcData.secondNumber)
   ) {
     multiply(calcData);
   } else if (
@@ -178,10 +177,15 @@ window.addEventListener(
         calcData.firstNumber += event.key;
         calcData.displayValue = calcData.firstNumber;
         document.getElementById("display").textContent = calcData.displayValue;
-      } else {
+      } else if (calcData.firstNumber && calcData.operator) {
         calcData.secondNumber += event.key;
         calcData.displayValue =
           calcData.firstNumber + calcData.operator + calcData.secondNumber;
+        document.getElementById("display").textContent = calcData.displayValue;
+      } else {
+        resetValues();
+        calcData.firstNumber += event.key;
+        calcData.displayValue = calcData.firstNumber;
         document.getElementById("display").textContent = calcData.displayValue;
       }
     }
