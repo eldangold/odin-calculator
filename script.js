@@ -100,11 +100,17 @@ for (let control of document.querySelectorAll(".controls")) {
       calcData.displayValue = calcData.firstNumber + calcData.operator;
       document.getElementById("display").textContent = calcData.displayValue;
       calcData.result = "";
-    } else if (!calcData.firstNumber && control.target.getAttribute("data-control") == "-") {
+    } else if (
+      !calcData.firstNumber &&
+      control.target.getAttribute("data-control") == "-"
+    ) {
       calcData.firstNumber = "-" + calcData.firstNumber;
       calcData.displayValue = calcData.firstNumber;
       document.getElementById("display").textContent = calcData.displayValue;
-    } else if (!calcData.firstNumber && control.target.getAttribute("data-control") !== "-") {
+    } else if (
+      !calcData.firstNumber &&
+      control.target.getAttribute("data-control") !== "-"
+    ) {
     } else {
       calcData.operator = control.target.getAttribute("data-control");
       calcData.displayValue = calcData.firstNumber + calcData.operator;
@@ -112,6 +118,33 @@ for (let control of document.querySelectorAll(".controls")) {
     }
   });
 }
+
+document.getElementById("positiveAndNegative").addEventListener("click", () => {
+  if (!calcData.operator) {
+    if (calcData.firstNumber.includes("-")) {
+      calcData.firstNumber = calcData.firstNumber.slice(1);
+      calcData.displayValue = calcData.firstNumber;
+      document.getElementById("display").textContent = calcData.displayValue;
+    }
+    else {
+      calcData.firstNumber = "-" + calcData.firstNumber;
+      calcData.displayValue = calcData.firstNumber;
+      document.getElementById("display").textContent = calcData.displayValue;
+    }
+  }
+  else if (calcData.secondNumber) {
+    if (calcData.secondNumber.includes("-")) {
+      calcData.secondNumber = calcData.secondNumber.slice(1);
+      calcData.displayValue = calcData.firstNumber + calcData.operator + calcData.secondNumber;
+      document.getElementById("display").textContent = calcData.displayValue;
+    }
+    else {
+      calcData.secondNumber = "-" + calcData.secondNumber;
+      calcData.displayValue = calcData.firstNumber + calcData.operator + calcData.secondNumber;
+      document.getElementById("display").textContent = calcData.displayValue;
+  }
+}
+});
 
 function resetValues() {
   calcData.firstNumber = "";
