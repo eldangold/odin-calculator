@@ -158,6 +158,10 @@ function resetValues() {
 document.getElementById("finishCalculation").addEventListener("click", () => {
   if (calcData.firstNumber && calcData.secondNumber) {
     operate(calcData);
+    calcData.firstNumber = calcData.result.toString();
+    calcData.secondNumber = "";
+    calcData.operator = "";
+    calcData.result = "";
   }
 });
 
