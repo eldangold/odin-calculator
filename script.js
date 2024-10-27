@@ -146,6 +146,24 @@ document.getElementById("positiveAndNegative").addEventListener("click", () => {
 }
 });
 
+document.getElementById("addFloatingPoint").addEventListener("click", () => {
+  if (!calcData.operator) {
+    if (!calcData.firstNumber.includes(".")) {
+      calcData.firstNumber += ".";
+      calcData.displayValue = calcData.firstNumber;
+      document.getElementById("display").textContent = calcData.displayValue;
+    }
+  }
+  else if (calcData.secondNumber) {
+    if (!calcData.secondNumber.includes(".")) {
+      calcData.secondNumber += "."
+      calcData.displayValue = calcData.firstNumber + calcData.operator + calcData.secondNumber;
+      document.getElementById("display").textContent = calcData.displayValue;
+  }
+}
+}
+)
+
 function resetValues() {
   calcData.firstNumber = "";
   calcData.secondNumber = "";
