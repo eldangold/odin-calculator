@@ -57,12 +57,11 @@ function operate(calcData) {
   ) {
     subtract(calcData);
   } else if (
-    calcData.operator === "X" ||
-    ("*" && calcData.firstNumber && calcData.secondNumber)
-  ) {
+    calcData.operator === "X" || calcData.operator === "*" && calcData.firstNumber && calcData.secondNumber)
+   {
     multiply(calcData);
   } else if (
-    calcData.operator === "/" &&
+    calcData.operator === "/" || calcData.operator === ":" &&
     calcData.firstNumber &&
     calcData.secondNumber
   ) {
@@ -274,20 +273,20 @@ window.addEventListener(
         calcData.result = "";
       }
       else if (event.key == ".") {
-        if (!calcData.operator) {
-          if (!calcData.firstNumber.includes(".")) {
-            calcData.firstNumber += ".";
-            calcData.displayValue = calcData.firstNumber;
-            document.getElementById("display").textContent = calcData.displayValue;
-          }
-        }
-        else if (calcData.secondNumber) {
-          if (!calcData.secondNumber.includes(".")) {
-            calcData.secondNumber += "."
-            calcData.displayValue = calcData.firstNumber + calcData.operator + calcData.secondNumber;
-            document.getElementById("display").textContent = calcData.displayValue;
-        }
-      }
+          if (!calcData.operator) {
+    if (!calcData.firstNumber.includes(".")) {
+      calcData.firstNumber += ".";
+      calcData.displayValue = calcData.firstNumber;
+      document.getElementById("display").textContent = calcData.displayValue;
+    }
+  }
+  else if (calcData.secondNumber) {
+    if (!calcData.secondNumber.includes(".")) {
+      calcData.secondNumber += "."
+      calcData.displayValue = calcData.firstNumber + calcData.operator + calcData.secondNumber;
+      document.getElementById("display").textContent = calcData.displayValue;
+  }
+}
       }
       else if (event.key !== "=" && event.key !== "Enter") {
         calcData.operator = event.key;
