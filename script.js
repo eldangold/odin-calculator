@@ -173,19 +173,7 @@ function addFloatingPoint() {
   }
 }
 
-document.getElementById("finishCalculation").addEventListener("click", () => {
-  if (calcData.firstNumber && calcData.secondNumber) {
-    operate(calcData);
-    calcData.firstNumber = calcData.result.toString();
-    calcData.secondNumber = "";
-    calcData.operator = "";
-    calcData.result = "";
-  }
-});
-
-document.getElementById("clearAll").addEventListener("click", resetValues);
-
-document.getElementById("backspace").addEventListener("click", () => {
+function backspace() {
   if (!calcData.operator) {
     calcData.firstNumber = calcData.firstNumber.slice(0, -1);
     calcData.displayValue = calcData.firstNumber;
@@ -216,7 +204,21 @@ document.getElementById("backspace").addEventListener("click", () => {
     calcData.displayValue = calcData.firstNumber;
     document.getElementById("display").textContent = calcData.displayValue;
   }
+}
+
+document.getElementById("finishCalculation").addEventListener("click", () => {
+  if (calcData.firstNumber && calcData.secondNumber) {
+    operate(calcData);
+    calcData.firstNumber = calcData.result.toString();
+    calcData.secondNumber = "";
+    calcData.operator = "";
+    calcData.result = "";
+  }
 });
+
+document.getElementById("clearAll").addEventListener("click", resetValues);
+
+document.getElementById("backspace").addEventListener("click", backspace);
 
 window.addEventListener(
   "keydown",
