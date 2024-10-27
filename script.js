@@ -248,8 +248,13 @@ window.addEventListener(
         calcData.secondNumber &&
         calcData.operator &&
         (event.key == "=" || event.key == "Enter")
-      )
+      ) {
         operate(calcData);
+        calcData.firstNumber = calcData.result.toString();
+        calcData.secondNumber = "";
+        calcData.operator = "";
+        calcData.result = "";
+      }
       else if (event.key !== "=" && event.key !== "Enter") {
         calcData.operator = event.key;
         calcData.displayValue = calcData.firstNumber + calcData.operator;
