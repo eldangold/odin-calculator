@@ -145,23 +145,7 @@ document.getElementById("positiveAndNegative").addEventListener("click", () => {
 }
 });
 
-document.getElementById("addFloatingPoint").addEventListener("click", () => {
-  if (!calcData.operator) {
-    if (!calcData.firstNumber.includes(".")) {
-      calcData.firstNumber += ".";
-      calcData.displayValue = calcData.firstNumber;
-      document.getElementById("display").textContent = calcData.displayValue;
-    }
-  }
-  else if (calcData.secondNumber) {
-    if (!calcData.secondNumber.includes(".")) {
-      calcData.secondNumber += "."
-      calcData.displayValue = calcData.firstNumber + calcData.operator + calcData.secondNumber;
-      document.getElementById("display").textContent = calcData.displayValue;
-  }
-}
-}
-)
+document.getElementById("addFloatingPoint").addEventListener("click", addFloatingPoint)
 
 function resetValues() {
   calcData.firstNumber = "";
@@ -170,6 +154,23 @@ function resetValues() {
   calcData.displayValue = "";
   calcData.result = "";
   document.getElementById("display").textContent = calcData.displayValue;
+}
+
+function addFloatingPoint() {
+  if (!calcData.operator) {
+    if (!calcData.firstNumber.includes(".")) {
+      calcData.firstNumber += ".";
+      calcData.displayValue = calcData.firstNumber;
+      document.getElementById("display").textContent = calcData.displayValue;
+    }
+  } else if (calcData.secondNumber) {
+    if (!calcData.secondNumber.includes(".")) {
+      calcData.secondNumber += ".";
+      calcData.displayValue =
+      calcData.firstNumber + calcData.operator + calcData.secondNumber;
+      document.getElementById("display").textContent = calcData.displayValue;
+    }
+  }
 }
 
 document.getElementById("finishCalculation").addEventListener("click", () => {
@@ -272,22 +273,7 @@ window.addEventListener(
         calcData.operator = "";
         calcData.result = "";
       }
-      else if (event.key == ".") {
-          if (!calcData.operator) {
-    if (!calcData.firstNumber.includes(".")) {
-      calcData.firstNumber += ".";
-      calcData.displayValue = calcData.firstNumber;
-      document.getElementById("display").textContent = calcData.displayValue;
-    }
-  }
-  else if (calcData.secondNumber) {
-    if (!calcData.secondNumber.includes(".")) {
-      calcData.secondNumber += "."
-      calcData.displayValue = calcData.firstNumber + calcData.operator + calcData.secondNumber;
-      document.getElementById("display").textContent = calcData.displayValue;
-  }
-}
-      }
+      else if (event.key == ".") addFloatingPoint()
       else if (event.key !== "=" && event.key !== "Enter") {
         calcData.operator = event.key;
         calcData.displayValue = calcData.firstNumber + calcData.operator;
