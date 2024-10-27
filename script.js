@@ -225,7 +225,7 @@ window.addEventListener(
       return;
     }
     const allowedNumbers = "1234567890";
-    const allowedOperators = "-+=*xX/:Enter";
+    const allowedOperators = ".-+=*xX/:Enter";
 
     if (allowedNumbers.includes(event.key)) {
       if (!calcData.operator) {
@@ -272,6 +272,22 @@ window.addEventListener(
         calcData.secondNumber = "";
         calcData.operator = "";
         calcData.result = "";
+      }
+      else if (event.key == ".") {
+        if (!calcData.operator) {
+          if (!calcData.firstNumber.includes(".")) {
+            calcData.firstNumber += ".";
+            calcData.displayValue = calcData.firstNumber;
+            document.getElementById("display").textContent = calcData.displayValue;
+          }
+        }
+        else if (calcData.secondNumber) {
+          if (!calcData.secondNumber.includes(".")) {
+            calcData.secondNumber += "."
+            calcData.displayValue = calcData.firstNumber + calcData.operator + calcData.secondNumber;
+            document.getElementById("display").textContent = calcData.displayValue;
+        }
+      }
       }
       else if (event.key !== "=" && event.key !== "Enter") {
         calcData.operator = event.key;
