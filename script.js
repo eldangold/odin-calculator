@@ -160,8 +160,7 @@ function addFloatingPoint() {
   } else if (calcData.secondNumber) {
     if (!calcData.secondNumber.includes(".")) {
       calcData.secondNumber += ".";
-      calcData.displayValue =
-      calcData.firstNumber + calcData.operator + calcData.secondNumber;
+      calcData.displayValue = calcData.firstNumber + calcData.operator + calcData.secondNumber;
       document.getElementById("display").textContent = calcData.displayValue;
     }
   }
@@ -262,7 +261,7 @@ window.addEventListener(
         calcData.firstNumber = calcData.result.toString();
         calcData.secondNumber = calcData.operator = calcData.result = "";
       }
-      else if (event.key == ".") addFloatingPoint()
+      else if (event.key == ".") addFloatingPoint();
       else if (event.key == "Backspace") backspace();
       else if (event.key !== "=" && event.key !== "Enter") {
         calcData.operator = event.key;
