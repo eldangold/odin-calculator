@@ -1,40 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="style.css" rel="stylesheet"/>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="style.css" rel="stylesheet" />
     <script src="script.js" defer></script>
     <title>Calculator</title>
-</head>
-<body>
+  </head>
+  <body>
     <div class="container">
-        <div class="calculator">
-            <div class="displayPanel">
-            <div id="display"></div>
-            <button id="backspace">⌫</button>
+      <div class="calculator">
+        <div class="displayPanel">
+          <div id="display"></div>
+          <button id="backspace">⌫</button>
         </div>
-            <div class="buttons">
-                <button class="numbers">7</button>
-                <button class="numbers">8</button>
-                <button class="numbers">9</button>
-                <button class="controls">X</button>
-                <button class="numbers">4</button>
-                <button class="numbers">5</button>
-                <button class="numbers">6</button>
-                <button class="controls">-</button>
-                <button class="numbers">1</button>
-                <button class="numbers">2</button>
-                <button class="numbers">3</button>
-                <button class="controls">+</button>
-                <button id="positiveAndNegative">+/-</button>
-                <button class="numbers">0</button>
-                <button id="addFloatingPoint">.</button>
-                <button class="controls">/</button>  
-                <button id="clearAll">AC</button>
-                <button id="finishCalculation">=</button>
-            </div>
+        <div class="buttons">
+          <button class="numbers" data-number="7">7</button>
+          <button class="numbers" data-number="8">8</button>
+          <button class="numbers" data-number="9">9</button>
+          <button class="controls" data-control="*">X</button>
+          <button class="numbers" data-number="4">4</button>
+          <button class="numbers" data-number="5">5</button>
+          <button class="numbers" data-number="6">6</button>
+          <button class="controls" data-control="-">-</button>
+          <button class="numbers" data-number="1">1</button>
+          <button class="numbers" data-number="2">2</button>
+          <button class="numbers" data-number="3">3</button>
+          <button class="controls" data-control="+">+</button>
+          <button id="positiveAndNegative">+/-</button>
+          <button class="numbers" data-number="0">0</button>
+          <button id="addFloatingPoint">.</button>
+          <button class="controls">/</button>
+          <button id="clearAll">AC</button>
+          <button id="finishCalculation">=</button>
         </div>
+      </div>
     </div>
-</body>
+  </body>
 </html>
