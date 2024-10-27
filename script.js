@@ -57,7 +57,7 @@ function operate(calcData) {
   ) {
     subtract(calcData);
   } else if (
-    calcData.operator === "X" || calcData.operator === "*" && calcData.firstNumber && calcData.secondNumber)
+    calcData.operator === "X" || calcData.operator === "x" || calcData.operator === "*" && calcData.firstNumber && calcData.secondNumber)
    {
     multiply(calcData);
   } else if (
