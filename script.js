@@ -78,11 +78,11 @@ for (let number of document.querySelectorAll(".numbers")) {
     }
 
     if (!calcData.operator) {
-      calcData.firstNumber += number.target.textContent;
+      calcData.firstNumber += number.target.getAttribute("data-number");
       calcData.displayValue = calcData.firstNumber;
       document.getElementById("display").textContent = calcData.displayValue;
     } else {
-      calcData.secondNumber += number.target.textContent;
+      calcData.secondNumber += number.target.getAttribute("data-number");
       calcData.displayValue =
         calcData.firstNumber + calcData.operator + calcData.secondNumber;
       document.getElementById("display").textContent = calcData.displayValue;
@@ -94,19 +94,19 @@ for (let control of document.querySelectorAll(".controls")) {
   control.addEventListener("click", (control) => {
     if (calcData.firstNumber && calcData.secondNumber) {
       operate(calcData);
-      calcData.operator = control.target.textContent;
+      calcData.operator = control.target.getAttribute("data-control");
       calcData.firstNumber = calcData.result;
       calcData.secondNumber = "";
       calcData.displayValue = calcData.firstNumber + calcData.operator;
       document.getElementById("display").textContent = calcData.displayValue;
       calcData.result = "";
-    } else if (!calcData.firstNumber && control.target.textContent == "-") {
+    } else if (!calcData.firstNumber && control.target.getAttribute("data-control") == "-") {
       calcData.firstNumber = "-" + calcData.firstNumber;
       calcData.displayValue = calcData.firstNumber;
       document.getElementById("display").textContent = calcData.displayValue;
-    } else if (!calcData.firstNumber && control.target.textContent !== "-") {
+    } else if (!calcData.firstNumber && control.target.getAttribute("data-control") !== "-") {
     } else {
-      calcData.operator = control.target.textContent;
+      calcData.operator = control.target.getAttribute("data-control");
       calcData.displayValue = calcData.firstNumber + calcData.operator;
       document.getElementById("display").textContent = calcData.displayValue;
     }
