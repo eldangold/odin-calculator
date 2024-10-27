@@ -217,7 +217,7 @@ window.addEventListener(
       return;
     }
     const allowedNumbers = "1234567890";
-    const allowedOperators = ".-+=*xX/:Enter";
+    const allowedOperators = ".-+=*xX/:EnterBackspace";
 
     if (allowedNumbers.includes(event.key)) {
       if (!calcData.operator) {
@@ -263,6 +263,7 @@ window.addEventListener(
         calcData.secondNumber = calcData.operator = calcData.result = "";
       }
       else if (event.key == ".") addFloatingPoint()
+      else if (event.key == "Backspace") backspace();
       else if (event.key !== "=" && event.key !== "Enter") {
         calcData.operator = event.key;
         calcData.displayValue = calcData.firstNumber + calcData.operator;
